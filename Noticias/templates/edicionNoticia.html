@@ -1,0 +1,30 @@
+{% extends "plantilla.html" %}
+{% block title %} Gestión de periódico {% endblock %}
+{% block body %}
+    <div class="col-md-4 offset-md-4">
+            <h2>Editar noticia  {{ noticia.nombre }}</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarNoticia/" method="POST">{% csrf_token %}
+                        <h6>ID</h6>
+                        <div class="form-group">
+                            <input type="number" id="noticiaID" name="noticiaID" value="{{ noticia.id }}" class="form-control" readonly>
+                        </div>
+                        <br>
+                        <h6>Nombre</h6>
+                        <div class="form-group">
+                            <input type="text" id="txtNombre" name="txtNombre" value="{{ noticia.nombre }}" class="form-control" placeholder="Nombre de la noticia">
+                        </div>
+                        <br>
+                        <h6>Descripción</h6>
+
+                        <textarea name="txtDescripcion" id="txtDescripcion" rows="10" cols="40" class="form-control">{{ noticia.descripcion }}</textarea>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+{% endblock %}
